@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Confirmado - VetCare Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#0284c7',
+                        accent: '#f97316',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .success-bg {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="container mx-auto px-4 py-12">
+            <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="success-bg text-white p-8 text-center">
+                    <i class="fas fa-check-circle text-6xl mb-4"></i>
+                    <h1 class="text-3xl font-bold mb-2">Pagamento Confirmado!</h1>
+                    <p class="text-xl">Bem-vindo ao VetCare Pro</p>
+                </div>
+                
+                <div class="p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-bold text-dark mb-4">Próximos Passos</h2>
+                        <p class="text-gray-600">
+                            Sua assinatura foi processada com sucesso. Aqui estão as próximas etapas:
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                1
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-dark mb-1">Verifique seu email</h3>
+                                <p class="text-gray-600">
+                                    Enviamos um email de boas-vindas com seus dados de acesso e instruções detalhadas.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                2
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-dark mb-1">Acesse o sistema</h3>
+                                <p class="text-gray-600">
+                                    Clique no botão abaixo para acessar o VetCare Pro na nuvem ou instale a versão desktop.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                3
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-dark mb-1">Configure sua clínica</h3>
+                                <p class="text-gray-600">
+                                    Siga o guia de configuração inicial para personalizar o sistema para sua clínica.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 text-center">
+                        <button id="accessSystem" class="btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg mb-4">
+                            <i class="fas fa-sign-in-alt mr-2"></i> Acessar Sistema
+                        </button>
+                        <p class="text-gray-600">
+                            Precisa de ajuda? <a href="mailto:suporte@vetcarepro.com.br" class="text-primary font-medium">Contate nosso suporte</a>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 text-center">
+                    <p class="text-gray-600">
+                        &copy; 2023 VetCare Pro. Todos os direitos reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('accessSystem').addEventListener('click', function() {
+            // Em um sistema real, isso redirecionaria para o sistema
+            alert('Em um sistema real, você seria redirecionado para o sistema VetCare Pro.\n\nComo exemplo, estamos simulando o acesso.');
+            
+            // Simular redirecionamento
+            // window.location.href = 'https://app.vetcarepro.com.br';
+        });
+    </script>
+</body>
+</html>
