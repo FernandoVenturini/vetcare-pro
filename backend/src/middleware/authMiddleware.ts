@@ -12,7 +12,7 @@ export const authenticateToken = async (
     const token = authHeader && authHeader.split(" ")[1];
 
     if (!token) {
-      res.status(401).json({ error: "Token de acesso necessário" });
+      res.status(401).json({ error: "ERROR! Token de acesso necessário!" });
       return;
     }
 
@@ -23,7 +23,7 @@ export const authenticateToken = async (
 
     const user = await User.findByPk(decoded.id);
     if (!user || !user.isActive) {
-      res.status(401).json({ error: "Usuário não encontrado ou desativado" });
+      res.status(401).json({ error: "Usuário não encontrado ou desativado!" });
       return;
     }
 
@@ -36,7 +36,7 @@ export const authenticateToken = async (
 
     next();
   } catch (error) {
-    res.status(403).json({ error: "Token inválido" });
+    res.status(403).json({ error: "Token inválido!" });
   }
 };
 
@@ -45,7 +45,7 @@ export const requireRole = (roles: string[]) => {
     const user = (req as any).user;
 
     if (!user || !roles.includes(user.role)) {
-      res.status(403).json({ error: "Acesso negado" });
+      res.status(403).json({ error: "Acesso negado!" });
       return;
     }
 

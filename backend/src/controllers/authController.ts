@@ -10,7 +10,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     // Verificar se usuário já existe
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
-      res.status(400).json({ error: "Email já cadastrado" });
+      res.status(400).json({ error: "ERROR! Email já cadastrado!" });
       return;
     }
 
@@ -21,7 +21,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       password,
       role,
       clinicId,
-      isActive: true, // Adicione esta linha
+      isActive: true,
     });
 
     // Gerar token JWT
@@ -32,7 +32,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     );
 
     res.status(201).json({
-      message: "Usuário criado com sucesso",
+      message: "Usuário criado com sucesso!",
       user: {
         id: user.id,
         name: user.name,
@@ -44,7 +44,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     });
   } catch (error) {
     console.error("Erro no registro:", error);
-    res.status(500).json({ error: "Erro interno do servidor" });
+    res.status(500).json({ error: "Erro interno do servidor!" });
   }
 };
 
@@ -55,20 +55,20 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     // Encontrar usuário
     const user = await User.findOne({ where: { email } });
     if (!user) {
-      res.status(401).json({ error: "Credenciais inválidas" });
+      res.status(401).json({ error: "ERROR! Credenciais inválidas!" });
       return;
     }
 
     // Verificar senha
     const isValidPassword = await user.validatePassword(password);
     if (!isValidPassword) {
-      res.status(401).json({ error: "Credenciais inválidas" });
+      res.status(401).json({ error: "ERROR! Credenciais inválidas!" });
       return;
     }
 
     // Verificar se usuário está ativo
     if (!user.isActive) {
-      res.status(401).json({ error: "Usuário desativado" });
+      res.status(401).json({ error: "ERROR! Usuário desativado!" });
       return;
     }
 
@@ -80,7 +80,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     );
 
     res.json({
-      message: "Login realizado com sucesso",
+      message: "Login realizado com sucesso!",
       user: {
         id: user.id,
         name: user.name,
@@ -92,6 +92,6 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     });
   } catch (error) {
     console.error("Erro no login:", error);
-    res.status(500).json({ error: "Erro interno do servidor" });
+    res.status(500).json({ error: "Erro interno do servidor!" });
   }
 };

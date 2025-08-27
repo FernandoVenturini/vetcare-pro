@@ -25,6 +25,10 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json({ limit: '10mb' }));
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, morgan_1.default)('combined'));
+app.use((0, cors_1.default)({
+    origin: 'http://localhost:3000',
+    credentials: true,
+}));
 const limiter = (0, express_rate_limit_1.default)({
     windowMs: 15 * 60 * 1000,
     max: 100

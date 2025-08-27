@@ -32,6 +32,12 @@ app.use(express.urlencoded({ extended: true }));
 // Logging
 app.use(morgan('combined'));
 
+// Configure CORS para aceitar requests do frontend
+app.use(cors({
+  origin: 'http://localhost:3000', // URL do seu frontend
+  credentials: true,
+}));
+
 // Rate limiting
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutos

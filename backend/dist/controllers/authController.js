@@ -11,7 +11,7 @@ const register = async (req, res) => {
         const { name, email, password, role, clinicId } = req.body;
         const existingUser = await User_1.default.findOne({ where: { email } });
         if (existingUser) {
-            res.status(400).json({ error: "Email já cadastrado" });
+            res.status(400).json({ error: "ERROR! Email já cadastrado!" });
             return;
         }
         const user = await User_1.default.create({
@@ -24,7 +24,7 @@ const register = async (req, res) => {
         });
         const token = jsonwebtoken_1.default.sign({ id: user.id, email: user.email, role: user.role }, process.env.JWT_SECRET || "secret", { expiresIn: "24h" });
         res.status(201).json({
-            message: "Usuário criado com sucesso",
+            message: "Usuário criado com sucesso!",
             user: {
                 id: user.id,
                 name: user.name,
@@ -37,7 +37,7 @@ const register = async (req, res) => {
     }
     catch (error) {
         console.error("Erro no registro:", error);
-        res.status(500).json({ error: "Erro interno do servidor" });
+        res.status(500).json({ error: "Erro interno do servidor!" });
     }
 };
 exports.register = register;
@@ -46,21 +46,21 @@ const login = async (req, res) => {
         const { email, password } = req.body;
         const user = await User_1.default.findOne({ where: { email } });
         if (!user) {
-            res.status(401).json({ error: "Credenciais inválidas" });
+            res.status(401).json({ error: "ERROR! Credenciais inválidas!" });
             return;
         }
         const isValidPassword = await user.validatePassword(password);
         if (!isValidPassword) {
-            res.status(401).json({ error: "Credenciais inválidas" });
+            res.status(401).json({ error: "ERROR! Credenciais inválidas!" });
             return;
         }
         if (!user.isActive) {
-            res.status(401).json({ error: "Usuário desativado" });
+            res.status(401).json({ error: "ERROR! Usuário desativado!" });
             return;
         }
         const token = jsonwebtoken_1.default.sign({ id: user.id, email: user.email, role: user.role }, process.env.JWT_SECRET || "secret", { expiresIn: "24h" });
         res.json({
-            message: "Login realizado com sucesso",
+            message: "Login realizado com sucesso!",
             user: {
                 id: user.id,
                 name: user.name,
@@ -73,7 +73,7 @@ const login = async (req, res) => {
     }
     catch (error) {
         console.error("Erro no login:", error);
-        res.status(500).json({ error: "Erro interno do servidor" });
+        res.status(500).json({ error: "Erro interno do servidor!" });
     }
 };
 exports.login = login;

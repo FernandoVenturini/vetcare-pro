@@ -13,6 +13,7 @@ import {
   FaPlus,
   FaSearch,
   FaBell,
+  FaHeart,
 } from "react-icons/fa";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -52,7 +53,7 @@ const Sidebar = () => {
     <div className="bg-white w-64 min-h-screen shadow-md">
       <div className="p-6 border-b border-gray-200">
         <h1 className="text-xl font-bold text-primary-700 flex items-center">
-          <FaPaw className="mr-2" />
+          <FaHeart className="mr-2" />
           VetCare Pro
         </h1>
       </div>

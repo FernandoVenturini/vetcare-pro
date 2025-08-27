@@ -11,13 +11,13 @@ const authenticateToken = async (req, res, next) => {
         const authHeader = req.headers["authorization"];
         const token = authHeader && authHeader.split(" ")[1];
         if (!token) {
-            res.status(401).json({ error: "Token de acesso necessário" });
+            res.status(401).json({ error: "ERROR! Token de acesso necessário!" });
             return;
         }
         const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET || "secret");
         const user = await User_1.default.findByPk(decoded.id);
         if (!user || !user.isActive) {
-            res.status(401).json({ error: "Usuário não encontrado ou desativado" });
+            res.status(401).json({ error: "Usuário não encontrado ou desativado!" });
             return;
         }
         req.user = {
@@ -29,7 +29,7 @@ const authenticateToken = async (req, res, next) => {
         next();
     }
     catch (error) {
-        res.status(403).json({ error: "Token inválido" });
+        res.status(403).json({ error: "Token inválido!" });
     }
 };
 exports.authenticateToken = authenticateToken;
@@ -37,7 +37,7 @@ const requireRole = (roles) => {
     return (req, res, next) => {
         const user = req.user;
         if (!user || !roles.includes(user.role)) {
-            res.status(403).json({ error: "Acesso negado" });
+            res.status(403).json({ error: "Acesso negado!" });
             return;
         }
         next();
